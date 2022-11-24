@@ -1,0 +1,48 @@
+# this script based off of https://github.com/tolbertam/mocha-appveyor-reporter/blob/master/appveyor.yml
+
+branches:
+  except:
+    - gh-pages
+
+image:
+- Visual Studio 2017
+- Ubuntu
+
+environment:
+  matrix:
+
+    - nodejs_version: "12"
+      PYTHON: "C:\\Python37-x64"
+
+    - nodejs_version: "14"
+      PYTHON: "C:\\Python37-x64"
+
+    - nodejs_version: "16"
+      PYTHON: "C:\\Python37-x64"
+  
+install:
+  - cmd: powershell Install-Product node $env:nodejs_version
+  - sh: nvm install $nodejs_version
+  - npm install
+  - npm install codecov -g
+  - npm install nyc -g
+
+build: off
+
+test_script:
+  - npm run appveyorTest
+  - nyc report --reporter=json
+  - codecov -f coverage/coverage-final.json
+
+cache:
+  - node_modules -> package.json
+
+notifications:
+  - provider: Email
+    to:
+      - almenon214@gmail.com
+    on_build_success: false
+    
+skip_commits:
+  files:
+    - '**/*.md'

@@ -1,0 +1,26 @@
+<head>
+  <style> body { margin: 0; } </style>
+
+  <script src="//unpkg.com/3d-force-graph"></script>
+<!--  <script src="../../dist/3d-force-graph.js"></script>-->
+</head>
+
+<body>
+
+  <div id="3d-graph"></div>
+  <script>
+    const elem = document.getElementById('3d-graph');
+
+    const Graph = ForceGraph3D()(elem)
+      .jsonUrl('../datasets/blockchain_data.json')
+      .linkWidth('value')
+      .nodeAutoColorBy('category')
+      .nodeLabel(node => `${node.id} ${node.user}`)
+      .nodeVal('size')
+      .onNodeClick(node => window.open(`https://bscscan.com/address/${node.id}`, '_blank'))
+      .onNodeHover(node => elem.style.cursor = node ? 'pointer' : null);;
+  </script>
+
+  <script type="text/javascript" src="main.js"></script>
+
+</body>
