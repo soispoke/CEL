@@ -5,10 +5,10 @@ DuneGraf
 
 * Once you click on a page, navigate in the 3D graph, zoom in/out, drag nodes and explore!
 
-Each edge represents an ERC20 transfer, and you can click on Nodes to get redirected to the [Etherscan](https://etherscan.io/) page of their corresponding 
-address.
+  Each edge represents an ERC20 transfer, and you can click on Nodes to get redirected to the [Etherscan](https://etherscan.io/) page of their    
+  corresponding address.
 
-Notice how nodes are colored based their label category (MEV, Exchange, Contract, etc...)
+  Notice how nodes are colored based their label category (MEV, Exchange, Contract, etc...)
 
 * To choose another blockchain, token address, or a different time period to analyse, modify the following parameters in the ([main.py script](https://github.com/soispoke/DuneGraf/blob/main/main.py)):   `blockchain`, `address`, `start_date`, `end_date`
 
