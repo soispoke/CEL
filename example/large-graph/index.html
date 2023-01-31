@@ -17,7 +17,7 @@
       .nodeAutoColorBy('category')
       .nodeLabel(node => `${node.id} ${node.user}`)
       .nodeVal('size')
-      .onNodeClick(node => window.open(`https://bscscan.com/address/${node.id}`, '_blank'))
+      .onNodeClick(node => window.open(`https://etherscan.io/address/${node.id}`, '_blank'))
       .onNodeHover(node => elem.style.cursor = node ? 'pointer' : null);;
   </script>
 
