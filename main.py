@@ -1,21 +1,15 @@
-#! /usr/bin/env python3
-import readline
 import dotenv
 import os
 import json
-import sys
 
 from dune_client.types import QueryParameter
 from dune_client.client import DuneClient
 from dune_client.query import Query
 
-lines = sys.stdin.readlines()
-data = json.loads(lines[0])
-
-blockchain = data[0]
-address = data[1]
-start_date = data[2]
-end_date = data[3]
+blockchain = "bnb"
+address = "0x0d8ce2a99bb6e3b7db580ed848240e4a0f9ae153"
+start_date = "2021-06-01 00:00:00"
+end_date = "2021-06-25 21:08:00"
 
 query_nodes = Query(
     name="Query Nodes",
@@ -43,8 +37,9 @@ print("Results available at", query_nodes.url(), query_links.url())
 
 dotenv.load_dotenv()
 dune = DuneClient(os.environ["DUNE_API_KEY"])
-results_nodes = dune.parse(dune.refresh(query_nodes),'nodes')
-results_links = dune.parse(dune.refresh(query_links),'links')
-parsed = results_nodes.copy()
-parsed.update(results_links)
-dune.save(parsed)
+results_nodes = {"nodes": dune.refresh(query_nodes).result.rows} 
+results_links =  {"links": dune.refresh(query_links).result.rows} 
+
+parsed = {**results_nodes, **results_links}
+with open('example/datasets/blockchain_data.json', 'w') as f:
+    json.dump(parsed, f)
