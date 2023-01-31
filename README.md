@@ -11,10 +11,6 @@ address.
 Notice how nodes are colored based their label category (MEV, Exchange, Contract, etc...)
 
 * To choose another blockchain, token address, or a different time period to analyse, modify the following parameters in the `main.py` script:
-
-`blockchain = "ethereum"
-address = "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
-start_date = "2023-01-23 00:00:00"
-end_date = "2023-01-27 00:00:00"`
+   `blockchain`, `address`, `start_date`, `end_date`
 
 
