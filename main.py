@@ -6,10 +6,10 @@ from dune_client.types import QueryParameter
 from dune_client.client import DuneClient
 from dune_client.query import Query
 
-blockchain = "bnb"
-address = "0x0d8ce2a99bb6e3b7db580ed848240e4a0f9ae153"
-start_date = "2021-06-01 00:00:00"
-end_date = "2021-06-25 21:08:00"
+blockchain = "ethereum"
+address = "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
+start_date = "2023-01-23 00:00:00"
+end_date = "2023-01-27 00:00:00"
 
 query_nodes = Query(
     name="Query Nodes",
